@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { AuthUser, User } from '../../models/User';
 import { Router } from '@angular/router';
+import { KeyEvent } from './keyevent.enum';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,13 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  onKeyup(event: KeyboardEvent) {
+    if (event.ctrlKey && event.keyCode == KeyEvent.DOM_VK_RETURN) {
+      this.onSubmit();
+    }
   }
 
   onSubmit() {
