@@ -1,0 +1,12 @@
+<div class="login-form">
+    <form class="form" (ngSubmit)="onSubmit()">
+        <div *ngIf="err" class="err-msg">
+            {{ err }}
+        </div>
+        <label class="label">Email</label>
+        <input type="email" name="email" [(ngModel)]="email" placeholder="Email" />
+        <label class="label">Password</label>
+        <input type="password" name="password" [(ngModel)]="password" placeholder="Password" />
+        <input type="submit" value="Submit" class="btn" id="submit" />
+    </form>
+</div>
